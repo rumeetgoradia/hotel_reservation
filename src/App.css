@@ -368,6 +368,8 @@ h6 {
 
 .single-room {
   padding: 5rem 0 0 0;
+  height: auto;
+  overflow-y: auto;
 }
 .single-room-images {
   width: 80vw;
