@@ -10,8 +10,8 @@ const Home = () => {
     <>
       <Hero hero="defaultHero">
         <Banner
-          title="Rumeet's Rich Rooms"
-          subtitle="Deluxe rooms starting at $299 per night"
+          title="City reservations"
+          subtitle="Deluxe rooms starting at $162 per night"
         >
           <Link to="/rooms" className="btn-primary">
             Our Rooms

@@ -1,15 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:200,400&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 :root {
-  --primaryColor: #af9a7d;
-  --mainWhite: #fff;
+  --primaryColor: #aba48f;
+  --mainWhite: #f7f7f7;
   --offWhite: #f7f7f7;
-  --mainBlack: #222;
-  --mainGrey: #ececec;
-  --darkGrey: #cfcfcf;
+  --mainBlack: #0c1213;
+  --mainGrey: #b9b9bf;
+  --darkGrey: #a2a9b5;
   --mainTransition: all 0.3s linear;
   --mainSpacing: 3px;
   --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
@@ -20,7 +22,8 @@ body {
   padding-top: 66px;
   color: var(--mainBlack);
   background: var(--mainWhite);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Oswald", sans-serif;
+  font-weight: 200;
   line-height: 1.4;
 }
 h1 {
@@ -94,12 +97,28 @@ h6 {
   left: 0;
   width: 100%;
   padding: 0.75rem 2rem;
-  background: var(--offWhite);
+  background: #ece9e6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ffffff,
+    #ece9e6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ffffff,
+    #ece9e6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   z-index: 1;
 }
 .nav-header {
   display: flex;
   justify-content: space-between;
+}
+
+.nav-header img {
+  height: 37px;
+  width: auto;
 }
 .nav-btn {
   background: transparent;
@@ -164,7 +183,7 @@ h6 {
 .defaultHero,
 .roomsHero {
   min-height: calc(100vh - 66px);
-  background: url("./images/defaultBcg.jpeg") center/cover no-repeat;
+  background: url("./images/city-1209105_1280-1.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,6 +202,7 @@ h6 {
   text-align: center;
   text-transform: capitalize;
   letter-spacing: var(--mainSpacing);
+  min-width: 650px;
 }
 .banner h1 {
   font-size: 2.5rem;
@@ -238,7 +258,7 @@ h6 {
   padding: 5rem 0;
 }
 .services {
-  background: var(--darkGrey);
+  background: var(--mainGrey);
   text-align: center;
 }
 .services-center {
@@ -360,7 +380,7 @@ h6 {
   text-transform: capitalize;
   padding: 0.5rem 0;
   text-align: center;
-  font-weight: 700;
+  font-weight: 200;
   letter-spacing: var(--mainSpacing);
 }
 /* end of room  */
@@ -371,7 +391,7 @@ h6 {
   height: auto;
   overflow-y: auto;
 }
-.single-room-images {
+.lightbox-container {
   width: 80vw;
   margin: 0 auto;
   display: grid;
@@ -379,7 +399,7 @@ h6 {
   grid-row-gap: 2rem;
   grid-column-gap: 50px;
 }
-.single-room-images img {
+.lightbox-container img {
   width: 100%;
   display: block;
 }
@@ -465,10 +485,21 @@ h6 {
     max-width: 1170px;
   }
 }
+
+.rooms-container {
+  background: #ece9e6; /* fallback for old browsers */
+  background: -webkit-radial-gradient(
+    circle at top right,
+    #8e9eab,
+    #eef2f3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: radial-gradient(circle at top right, #8e9eab, #eef2f3);
+}
+
 /* end of roomlist */
 /*  rooms fitler*/
 .filter-container {
-  padding: 5rem 0;
+  padding: 5rem 0 0 0;
 }
 .filter-form {
   width: 60vw;
@@ -490,6 +521,8 @@ h6 {
   width: 100%;
   background: transparent;
   font-size: 1rem;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
 }
 .size-inputs {
   display: flex;
