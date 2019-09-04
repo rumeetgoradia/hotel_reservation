@@ -7,25 +7,25 @@ export default class Services extends Component {
     services: [
       {
         icon: <FaCocktail></FaCocktail>,
-        title: "Free Cocktails",
+        title: "Tastiest Cocktails",
         info:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem ipsa vero numquam amet, nisi quam."
       },
       {
         icon: <FaHiking></FaHiking>,
-        title: "Endless Hiking",
+        title: "Beautiful Trails",
         info:
           "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae voluptatem velit quos numquam ab soluta."
       },
       {
         icon: <FaShuttleVan />,
-        title: "Free shuttle",
+        title: "Efficient shuttle",
         info:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem necessitatibus temporibus aspernatur, ducimus velit veritatis."
       },
       {
         icon: <FaBeer />,
-        title: "Strongest Beer",
+        title: "Coldest Beer",
         info:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque a pariatur excepturi, nihil nesciunt velit."
       }

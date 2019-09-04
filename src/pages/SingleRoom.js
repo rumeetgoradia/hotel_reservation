@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import defaultBG from "../images/room-1.jpeg";
-import Hero from "../components/Hero";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import { RoomContext } from "../context";
 import StyledHero from "../components/StyledHero";
-import Lightbox from "react-lightbox-component";
 
 export default class SingleRoom extends Component {
   constructor(props) {
@@ -44,11 +42,65 @@ export default class SingleRoom extends Component {
     } = room;
     const [mainImg, ...defaultImg] = images;
     // const imgs = images.map(item => "src: " + item);
-    console.log(images);
-    const imgs = images.map(item => {
-      return { src: item, title: "", description: "" };
-    });
-    console.log(imgs);
+    // console.log(images);
+    // const imgs = images.map(item => {
+    //   return { src: item, title: "", description: "" };
+    // });
+    // console.log(imgs);
+
+    //Lightbox
+    const openModal = () => {
+      let modal = document.getElementById("modal");
+      if (modal != null) {
+        modal.style.display = "block";
+      }
+    };
+    const closeModal = () => {
+      let modal = document.getElementById("modal");
+      if (modal != null) {
+        modal.style.display = "none";
+      }
+    };
+
+    let slideIndex = 1;
+
+    const showSlides = n => {
+      let i;
+      let slides = document.getElementsByClassName("slides");
+      console.log("slides " + slides);
+      let dots = document.getElementsByClassName("demo");
+      if (n > slides.length) {
+        slideIndex = 1;
+      }
+      if (n < 1) {
+        slideIndex = slides.length;
+      }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      console.log(slideIndex);
+      if (slides[0] != null) {
+        slides[slideIndex - 1].style.display = "flex";
+      }
+      if (dots[0] != null) {
+        dots[slideIndex - 1].className += " active";
+      }
+    };
+
+    // showSlides(slideIndex);
+
+    const plusSlides = n => {
+      showSlides((slideIndex += n));
+    };
+
+    const currentSlide = n => {
+      // console.log(n);
+      showSlides((slideIndex = n));
+    };
+
     return (
       <>
         <StyledHero img={mainImg || this.state.defaultBG}>
@@ -59,12 +111,76 @@ export default class SingleRoom extends Component {
           </Banner>
         </StyledHero>
         <section className="single-room">
-          <Lightbox
+          <div className="row">
+            {images.map((item, index) => {
+              let x = index + 1;
+              // const cs = `openModal();currentSlide(${x})`;
+              return (
+                <div className="column" key={index} onClick={openModal}>
+                  <img
+                    key={index}
+                    src={item}
+                    alt={name}
+                    onClick={e => currentSlide(x, e)}
+                    className="hover-shadow"
+                  />
+                </div>
+              );
+            })}
+          </div>
+          <div className="modal" id="modal">
+            <span className="close cursor" onClick={closeModal}>
+              &times;
+            </span>
+            <a className="prev" onClick={e => plusSlides(-1, e)}>
+              &#10094;
+            </a>
+            <a className="next" onClick={e => plusSlides(1, e)}>
+              &#10095;
+            </a>
+            <div className="modal-content">
+              {images.map((item, index) => {
+                return (
+                  <div className="slides" key={index}>
+                    <img
+                      key={index}
+                      src={item}
+                      alt={name}
+                      style={{ width: "100%" }}
+                    />
+                  </div>
+                );
+              })}
+              {showSlides(slideIndex)}
+              {/* <a className="prev" onClick={e => plusSlides(-1, e)}>
+                &#10094;
+              </a>
+              <a className="next" onClick={e => plusSlides(1, e)}>
+                &#10095;
+              </a> */}
+              <div className="row2">
+                {images.map((item, index) => {
+                  // const cs = `currentSlide(${index + 1})`;
+                  return (
+                    <div className="column" key={index}>
+                      <img
+                        src={item}
+                        alt={name}
+                        className="demo"
+                        onClick={e => currentSlide(index + 1, e)}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+          {/* <Lightbox
             images={imgs}
             thumbnailWidth="100%"
             thumbnailHeight="auto"
             showImageModifiers={false}
-          />
+          /> */}
           {/* <Carousel views={imgs} /> */}
           {/* <ImageDisplay images={images} /> */}
           {/* <div className="single-room-images">
