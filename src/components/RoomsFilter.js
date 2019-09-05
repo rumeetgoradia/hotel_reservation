@@ -38,13 +38,28 @@ export default function RoomsFilter({ rooms }) {
   });
 
   let guests = getUnique(rooms, "capacity");
-  guests = guests.map((item, index) => {
-    return (
-      <option key={index} value={item}>
-        {item}
+  let maxGuests = Math.max(...guests);
+  // console.log(maxGuests);
+  let capOptions = [
+    <option key="1" value="1">
+      1
+    </option>
+  ];
+  for (let i = 2; i <= maxGuests; ++i) {
+    capOptions.push(
+      <option key={i} value={i}>
+        {i}
       </option>
     );
-  });
+  }
+
+  // guests = guests.map((item, index) => {
+  //   return (
+  //     <option key={index} value={item}>
+  //       {item}
+  //     </option>
+  //   );
+  // });
   return (
     <section className="filter-container">
       <Title title="search rooms" />
@@ -73,7 +88,7 @@ export default function RoomsFilter({ rooms }) {
             className="form-control"
             onChange={handleChange}
           >
-            {guests}
+            {capOptions}
           </select>
         </div>
         {/* end of guests */}
