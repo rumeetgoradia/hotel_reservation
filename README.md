@@ -1,4 +1,4 @@
-#Hotel Reservation Site
+# Hotel Reservation Site
 This is a beginner React project mocking a hotel reservation site built using ReactJS and Contentful, and a live example can be found [here](https://rumeetgoradia-hotel-reservation.netlify.com/ "City Reservations"). Created with the help of the following React libraries:
 
 - react-icons
